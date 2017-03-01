@@ -1,0 +1,29 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  background: #eee;
+  font-size: 0.36rem;
+  font-family: 'pingfang sc';
+  min-height: 100%;
+}
+
+.container .title {
+  color: #000;
+  font-size: 0.28rem;
+}
+
+.container .title1 {
+  font-size: 14px;
+}
+
+.container .title2 {
+  font-size: 0.28rem;
+}
+
+.container .title3 {
+  font-size: 0.5rem;
+}

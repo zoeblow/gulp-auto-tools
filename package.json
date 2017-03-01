@@ -1,0 +1,26 @@
+{
+  "name": "gulp",
+  "version": "1.0.0",
+  "description": "test gulp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-less": "^3.3.0",
+    "gulp-postcss": "^6.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.0.0",
+    "postcss-px2rem": "^0.3.0",
+    "gulp-imagemin": "^3.1.1",
+    "imagemin-pngquant": "^5.0.0",
+    "gulp-cache": "^0.4.5",
+    "gulp-clean": "^0.3.2"
+  }
+}
