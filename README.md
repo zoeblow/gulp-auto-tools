@@ -1,6 +1,16 @@
 # gulp-auto-tools
 gulp自动化构建项目
 
+## 如何使用
+### git clone https://github.com/zoeblow/gulp-auto-tools.git
+    先下崽下来嘛
+### cnpm/npm install
+    装一波依赖嘛
+### gulp
+    走一个gulp嘛
+    这就好了嘛，妥妥的。
+
+
 ## 功能能点
 ### less To css
 ### px To rem
