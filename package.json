@@ -27,6 +27,8 @@
     "browser-sync": "^2.18.8",
     "fs": "^0.0.1-security",
     "path": "^0.12.7",
+    "gulp-rev": "^7.1.2",
+    "gulp-rev-collector": "^1.1.1",
     "yargs": "^7.0.1"
   }
 }

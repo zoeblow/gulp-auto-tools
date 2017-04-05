@@ -16,9 +16,11 @@ const pngquant = require('imagemin-pngquant');
 const cache = require('gulp-cache');
 const clean = require('gulp-clean');
 const tap = require('gulp-tap');
+const rev = require('gulp-rev');
+const revCollector = require("gulp-rev-collector");
 
-var option = {base: 'app'};
-var dist = __dirname + '/dist';
+const option = {base: 'app'};
+const dist = __dirname + '/dist';
 /*********************css***********************/
 gulp.task('convertCSS', function() {
     return gulp.src('app/style/*.less')
@@ -108,6 +110,26 @@ gulp.task('buildhtml', function (){
     }));
 });
 
+
+gulp.task('build',function(){
+    return gulp.src(['./dist/style/index.min.css', './dist/script/index.min.js'], {base: 'dist'})
+        .pipe(rev())  //生成版本号文件
+        .pipe(gulp.dest('./dist/'))  // 将生成的文件 放入文件目录
+        .pipe(rev.manifest()) // 执行转换操作
+        .pipe(gulp.dest('./dist/rev')) ; //写入 rev.json 文件
+})
+
+gulp.task('rev', function () {
+    return gulp.src(['./dist/rev/rev-manifest.json', './dist/*.html'])
+        .pipe( revCollector({
+            replaceReved: true,
+        }))
+        .pipe( gulp.dest('./dist/') )
+        .pipe(browserSync.reload({
+            stream: true
+        }));
+});
+
 // 配置服务器
 gulp.task('serve', function() {
     browserSync.init({
@@ -120,13 +142,13 @@ gulp.task('serve', function() {
 
 // 监视文件变化，自动执行任务
 gulp.task('watch', function() {
-    gulp.watch('app/**/*.html', ['html','buildhtml']);
+    gulp.watch('app/**/*.html', ['html','buildhtml','rev']);
     gulp.watch('app/style/**/*.less', ['convertCSS']);
     gulp.watch('app/script/*.js', ['convertJS']);
     gulp.watch('app/images/**/*.*', ['images']);
-    gulp.watch('app/tpl/**/*.html', ['htmlTpl','buildhtml']);
-    // gulp.watch('app/*.html', []);
+    gulp.watch('app/tpl/**/*.html', ['htmlTpl','buildhtml','rev']);
+    gulp.watch(['dist/style/index.min.css','dist/script/index.min.js'], ['build','rev']);
 })
 
-gulp.task('start', ['convertJS', 'convertCSS', 'html', 'images','htmlTpl','buildhtml','serve']);
+gulp.task('start', ['convertJS', 'convertCSS', 'html', 'images','htmlTpl','buildhtml','build','rev','serve']);
 gulp.task('default', ['start', 'watch']);
