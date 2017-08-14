@@ -25,7 +25,8 @@ gulp自动化构建项目
 ### 自动添加版本号
 #### 注 实现方式比较辣鸡有时间在维护
 
-
+```
 ├── Readme.md                   // help
 ├── package.json                // 应用依赖源
 └── gulpfile.js                 // gulp配置
+```
